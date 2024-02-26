@@ -15,14 +15,14 @@ This means multiple containers can be launched on the same GPU ensuring one user
 
 Pick the container that works for you and launch it
 ```bash
-docker run -it --gpus 0 --ipc=host --pid=host allegroai/fractional-gpu-20.04-cuda-12.3-8gb bash
+docker run -it --gpus 0 --ipc=host --pid=host clearml/fractional-gpu:u22-cu12.3-8gb bash
 ```
 
 To verify fraction gpu memory limit is working correctly, run inside the container:
 ```bash
 nvidia-smi
 ``` 
-Here is en example output from A100 GPU:
+Here is an example output from A100 GPU:
 
 ```
 +---------------------------------------------------------------------------------------+
@@ -47,24 +47,24 @@ Here is en example output from A100 GPU:
 
 ### Available Container Images 
 
-| Memory Limit  | CUDA Ver | Ubuntu Ver | Docker Image                                         |
-|:-------------:|:--------:|:----------:|:----------------------------------------------------:|
-|     8 GiB     |   12.3   |   22.04    | `allegroai/clearml-fractional-gpu:u22.04-cu12.3-8gb` |
-|     8 GiB     |   12.3   |   20.04    | `allegroai/clearml-fractional-gpu:u20.04-cu12.3-8gb` |
-|     8 GiB     |   11.1   |   22.04    | `allegroai/clearml-fractional-gpu:u22.04-cu11.1-8gb` |
-|     8 GiB     |   11.1   |   20.04    | `allegroai/clearml-fractional-gpu:u20.04-cu11.1-8gb` |
-|     4 GiB     |   12.3   |   22.04    | `allegroai/clearml-fractional-gpu:u22.04-cu12.3-4gb` |
-|     4 GiB     |   12.3   |   20.04    | `allegroai/clearml-fractional-gpu:u20.04-cu12.3-4gb` |
-|     4 GiB     |   11.1   |   22.04    | `allegroai/clearml-fractional-gpu:u22.04-cu11.1-4gb` |
-|     4 GiB     |   11.1   |   20.04    | `allegroai/clearml-fractional-gpu:u20.04-cu11.1-4gb` |
-|     2 GiB     |   12.3   |   22.04    | `allegroai/clearml-fractional-gpu:u22.04-cu12.3-2gb` |
-|     2 GiB     |   12.3   |   20.04    | `allegroai/clearml-fractional-gpu:u20.04-cu12.3-2gb` |
-|     2 GiB     |   11.1   |   22.04    | `allegroai/clearml-fractional-gpu:u22.04-cu11.1-2gb` |
-|     2 GiB     |   11.1   |   20.04    | `allegroai/clearml-fractional-gpu:u20.04-cu11.1-2gb` |
-|     1 GiB     |   12.3   |   22.04    | `allegroai/clearml-fractional-gpu:u22.04-cu12.3-1gb` |
-|     1 GiB     |   12.3   |   20.04    | `allegroai/clearml-fractional-gpu:u20.04-cu12.3-1gb` |
-|     1 GiB     |   11.1   |   22.04    | `allegroai/clearml-fractional-gpu:u22.04-cu11.1-1gb` |
-|     1 GiB     |   11.1   |   20.04    | `allegroai/clearml-fractional-gpu:u20.04-cu11.1-1gb` |
+| Memory Limit  | CUDA Ver | Ubuntu Ver | Docker Image                             |
+|:-------------:|:--------:|:----------:|:----------------------------------------:|
+|     12 GiB    |   12.3   |   22.04    | `clearml/fractional-gpu:u22-cu12.3-12gb` |
+|     12 GiB    |   12.3   |   20.04    | `clearml/fractional-gpu:u20-cu12.3-12gb` |
+|     12 GiB    |   11.1   |   22.04    | `clearml/fractional-gpu:u22-cu11.1-12gb` |
+|     12 GiB    |   11.1   |   20.04    | `clearml/fractional-gpu:u20-cu11.1-12gb` |
+|     8 GiB     |   12.3   |   22.04    | `clearml/fractional-gpu:u22-cu12.3-8gb`  |
+|     8 GiB     |   12.3   |   20.04    | `clearml/fractional-gpu:u20-cu12.3-8gb`  |
+|     8 GiB     |   11.1   |   22.04    | `clearml/fractional-gpu:u22-cu11.1-8gb`  |
+|     8 GiB     |   11.1   |   20.04    | `clearml/fractional-gpu:u20-cu11.1-8gb`  |
+|     4 GiB     |   12.3   |   22.04    | `clearml/fractional-gpu:u22-cu12.3-4gb`  |
+|     4 GiB     |   12.3   |   20.04    | `clearml/fractional-gpu:u20-cu12.3-4gb`  |
+|     4 GiB     |   11.1   |   22.04    | `clearml/fractional-gpu:u22-cu11.1-4gb`  |
+|     4 GiB     |   11.1   |   20.04    | `clearml/fractional-gpu:u20-cu11.1-4gb`  |
+|     2 GiB     |   12.3   |   22.04    | `clearml/fractional-gpu:u22-cu12.3-2gb`  |
+|     2 GiB     |   12.3   |   20.04    | `clearml/fractional-gpu:u20-cu12.3-2gb`  |
+|     2 GiB     |   11.1   |   22.04    | `clearml/fractional-gpu:u22-cu11.1-2gb`  |
+|     2 GiB     |   11.1   |   20.04    | `clearml/fractional-gpu:u20-cu11.1-2gb`  |
 
 
 > [!IMPORTANT]
@@ -105,7 +105,7 @@ spec:
   hostPID: true
   containers:
   - name: train-container
-    image: allegroai/fractional-gpu-u22.04-cu12.3-8gb
+    image: clearml/fractional-gpu:u22-cu12.3-8gb
     command: ['python3', '-c', 'print(f"Free GPU Memory: (free, global) {torch.cuda.mem_get_info()}")']
 ```
 
