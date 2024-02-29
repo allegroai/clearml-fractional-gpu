@@ -5,10 +5,10 @@
 
 Sharing high-end GPUs or even prosumer & consumer GPUs between multiple users is the most cost-effective 
 way to accelerate AI development. Unfortunately until now the 
-only available solution applied for MIG/Slicing high-end GPUs (A100+) and required Kubernetes, <br>
-🔥 🎉 Welcome To Container Based Fractional GPU For Any Nvidia Card! 🎉 🔥  
-We present pre-packaged containers supporting CUDA 11.x & CUDA 12.x with **pre-built hard memory limitation!**  
-This means multiple containers can be launched on the same GPU ensuring one user does not allocate the entire host GPU memory!
+only solution existed applied for MIG/Slicing high-end GPUs (A100+) and required Kubernetes, <br>
+🔥 🎉 Welcome To Container Based Fractional GPU For Any Nvidia Card! 🎉 🔥 <br>
+We present pre-packaged containers supporting CUDA 11.x & CUDA 12.x with pre-built hard memory limitation!
+This means multiple containers can be launched on the same GPU ensuring one user cannot allocate the entire host GPU memory!
 (no more greedy processes grabbing the entire GPU memory! finally we have a driver level hard limiting memory option)
 
 ## ⚡ Installation
@@ -45,28 +45,27 @@ Here is an example output from A100 GPU:
 +---------------------------------------------------------------------------------------+
 ```
 
-### Available Container Images 
 
 | Memory Limit  | CUDA Ver | Ubuntu Ver | Docker Image                             |
 |:-------------:|:--------:|:----------:|:----------------------------------------:|
 |     12 GiB    |   12.3   |   22.04    | `clearml/fractional-gpu:u22-cu12.3-12gb` |
 |     12 GiB    |   12.3   |   20.04    | `clearml/fractional-gpu:u20-cu12.3-12gb` |
-|     12 GiB    |   11.1   |   22.04    | `clearml/fractional-gpu:u22-cu11.1-12gb` |
+|     12 GiB    |   11.7   |   22.04    | `clearml/fractional-gpu:u22-cu11.7-12gb` |
 |     12 GiB    |   11.1   |   20.04    | `clearml/fractional-gpu:u20-cu11.1-12gb` |
 |     8 GiB     |   12.3   |   22.04    | `clearml/fractional-gpu:u22-cu12.3-8gb`  |
 |     8 GiB     |   12.3   |   20.04    | `clearml/fractional-gpu:u20-cu12.3-8gb`  |
-|     8 GiB     |   11.1   |   22.04    | `clearml/fractional-gpu:u22-cu11.1-8gb`  |
+|     8 GiB     |   11.7   |   22.04    | `clearml/fractional-gpu:u22-cu11.7-8gb`  |
 |     8 GiB     |   11.1   |   20.04    | `clearml/fractional-gpu:u20-cu11.1-8gb`  |
 |     4 GiB     |   12.3   |   22.04    | `clearml/fractional-gpu:u22-cu12.3-4gb`  |
 |     4 GiB     |   12.3   |   20.04    | `clearml/fractional-gpu:u20-cu12.3-4gb`  |
-|     4 GiB     |   11.1   |   22.04    | `clearml/fractional-gpu:u22-cu11.1-4gb`  |
+|     4 GiB     |   11.7   |   22.04    | `clearml/fractional-gpu:u22-cu11.7-4gb`  |
 |     4 GiB     |   11.1   |   20.04    | `clearml/fractional-gpu:u20-cu11.1-4gb`  |
 |     2 GiB     |   12.3   |   22.04    | `clearml/fractional-gpu:u22-cu12.3-2gb`  |
 |     2 GiB     |   12.3   |   20.04    | `clearml/fractional-gpu:u20-cu12.3-2gb`  |
-|     2 GiB     |   11.1   |   22.04    | `clearml/fractional-gpu:u22-cu11.1-2gb`  |
+|     2 GiB     |   11.7   |   22.04    | `clearml/fractional-gpu:u22-cu11.7-2gb`  |
 |     2 GiB     |   11.1   |   20.04    | `clearml/fractional-gpu:u20-cu11.1-2gb`  |
 
-
+  
 > [!IMPORTANT]
 >
 > You must execute the container with `--pid=host` !
@@ -83,9 +82,9 @@ processes and other host processes when limiting memory / utilization usage
 
 ## 🔩 Customization
 
-Build your own containers inheriting from the original containers
+Build your own containers and inherit form the original containers
 
-You can find a few examples [here](https://github.com/allegroai/clearml-fractional-gpu/examples).
+You can find a few examples [here](https://github.com/allegroai/clearml-fractional-gpu/docker-examples).
 
 ## 🌸 Implications
 
@@ -128,12 +127,12 @@ We will keep updating & supporting new drivers as they continue to be released
 
 ## ❓ FAQ
 
-- **Q**: Will running `nvidia-smi` inside the container report the local processes' GPU consumption? <br>
+- **Q**: Will running `nvidia-smi` inside the container report the local processes GPU consumption? <br>
 **A**: Yes,  `nvidia-smi` is communicating directly with the low-level drivers and reports both accurate container GPU memory as well as the container local memory limitation.<br>
 Notice GPU utilization will be the global (i.e. host side) GPU utilization and not the specific local container GPU utilization.
 
 - **Q**: How do I make sure my Python / Pytorch / Tensorflow are actually memory limited <br>
-**A**: For PyTorch you can run:  
+**A**: For PyTorch you can run: <br>
 ```python
 import torch
 print(f'Free GPU Memory: (free, global) {torch.cuda.mem_get_info()}')
@@ -144,21 +143,22 @@ from numba import cuda
 print(f'Free GPU Memory: {cuda.current_context().get_memory_info()}')
 ```
 
-- **Q**: Can the limitation be broken by a user?  
-**A**: We are sure a malicious user will find a way. It was never our intention to protect against malicious users, 
+- **Q**: Can the limitation be broken by a user? <br>
+**A**: We are sure a malicious user will find a way. It was never our intention to protect against malicious users, <br>
 if you have a malicious user with access to your machines, fractional gpus are not your number 1 problem 😃
-- **Q**: How can I programmatically detect the memory limitation?  
-**A**: You can check the OS environment variable `GPU_MEM_LIMIT_GB`.  
-Notice that changing it will not remove or modify the limitation.
 
-- **Q**: Is running the container **with** `--pid=host` secure / safe?  
+- **Q**: How can I programmatically detect the memory limitation? <br>
+**A**: You can check the OS environment variable `GPU_MEM_LIMIT_GB`. <br>
+Notice that changing it will not remove or reduce the limitation.
+
+- **Q**: Is running the container **with** `--pid=host` secure / safe? <br>
 **A**: It should be both secure and safe. The main caveat from a security perspective is that
 a container process can see any command line running on the host system.
 If a process command line contains a "secret" then yes, this might become a potential data leak.
 Notice that passing "secrets" in command line is ill-advised, and hence we do not consider it a security risk.
-That said if security is key, the enterprise edition (see below) eliminates the need to run with `pid-host` and is thus fully secure
+That said if security is key, the enterprise edition (see below) eliminate the need to run with `pid-host` and thus fully secure
 
-- **Q**: Can you run the container **without** `--pid=host` ?  
+- **Q**: Can you run the container **without** `--pid=host` ? <br>
 **A**: You can! but you will have to use the enterprise version of the clearml-fractional-gpu container 
 (otherwise the memory limit is applied system wide instead of container wide). If this feature is important for you, please contact [ClearML sales & support](https://clear.ml/contact-us)
 
@@ -167,13 +167,13 @@ That said if security is key, the enterprise edition (see below) eliminates the 
 
 Usage license is granted for **personal**, **research**, **development** or **educational** purposes only.
 
-Commercial license is available as part of the [ClearML commercial solution](https://clear.ml)
+Commercial license is available as part of the [ClearML solution](https://clear.ml)
 
 ## 🤖 Commercial & Enterprise version
 
 ClearML offers enterprise and commercial license adding many additional features on top of fractional GPUs,
 these include orchestration, priority queues, quota management, compute cluster dashboard, 
-dataset management & experiment management, as well as enterprise grade security and support.  
+dataset management & experiment management, as well as enterprise grade security and support.
 Learn more about [ClearML Orchestration](https://clear.ml) or talk to us directly at [ClearML sales](https://clear.ml/contact-us)
 
 ## 📡 How can I help?
