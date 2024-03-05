@@ -84,7 +84,7 @@ processes and other host processes when limiting memory / utilization usage
 
 Build your own containers and inherit form the original containers
 
-You can find a few examples [here](https://github.com/allegroai/clearml-fractional-gpu/docker-examples).
+You can find a few examples [here](https://github.com/allegroai/clearml-fractional-gpu/examples).
 
 ## 🌸 Implications
 
