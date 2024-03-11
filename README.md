@@ -1,5 +1,11 @@
+<div align="center">
+
 # 🚀 🔥 Fractional GPU! ⚡ 📣
 ## Run multiple containers on the same GPU with driver level memory limitation ✨ and compute time-slicing 🎊 
+
+`🌟 Leave a star to support the project! 🌟`
+
+</div>
 
 ## 🔰 Introduction
 
@@ -45,6 +51,7 @@ Here is an example output from A100 GPU:
 +---------------------------------------------------------------------------------------+
 ```
 
+### 🐳 Containers
 
 | Memory Limit  | CUDA Ver | Ubuntu Ver | Docker Image                             |
 |:-------------:|:--------:|:----------:|:----------------------------------------:|
@@ -84,12 +91,12 @@ processes and other host processes when limiting memory / utilization usage
 
 Build your own containers and inherit form the original containers
 
-You can find a few examples [here](https://github.com/allegroai/clearml-fractional-gpu/tree/main/examples).
+You can find a few examples [here](https://github.com/allegroai/clearml-fractional-gpu/docker-examples).
 
-## 🌸 Implications
+## ☸ Kubernetes
 
-Our fractional GPU containers can be used on bare-metal executions as well as Kubernetes PODs.
-Yes! By using one our Fractional GPU containers you can limit the memory consumption your Job/Pod and 
+Fractional GPU containers can be used on bare-metal executions as well as Kubernetes PODs.
+Yes! By using one the Fractional GPU containers you can limit the memory consumption your Job/Pod and 
 allow you to easily share GPUs without fearing they will memory crash one another!
 
 Here's a simple Kubernetes POD template:
@@ -123,7 +130,9 @@ processes and other host processes when limiting memory / utilization usage
 The containers support Nvidia drivers <= `545.x.x`
 We will keep updating & supporting new drivers as they continue to be released
 
-**Supported GPUs**: GTX series 10, 20, 30, 40, RTX A series, and Data-Center P100, A100, A10/A40, L40/s, H100 
+**Supported GPUs**: RTX series 10, 20, 30, 40, A series, and Data-Center P100, A100, A10/A40, L40/s, H100 
+
+**Limitations**: Windows Host machines are currently not supported, if this is important for you, leave a request in the [Issues](/issues) section
 
 ## ❓ FAQ
 
