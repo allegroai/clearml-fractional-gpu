@@ -174,9 +174,9 @@ That said if security is key, the enterprise edition (see below) eliminate the n
 
 ## 📄 License
 
-Usage license is granted for **personal**, **research**, **development** or **educational** purposes only.
+The license to use ClearML is granted for research or development purposes only. ClearML may be used for educational, personal, or internal commercial use.
 
-Commercial license is available as part of the [ClearML solution](https://clear.ml)
+An expanded Commercial license for use within a product or service is available as part of the [ClearML](https://clear.ml) Scale or Enterprise solution.
 
 ## 🤖 Commercial & Enterprise version
 
