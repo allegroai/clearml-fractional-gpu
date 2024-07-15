@@ -19,12 +19,12 @@ This means multiple containers can be launched on the same GPU ensuring one user
 
 ## ⚡ Installation
 
-Pick the container that works for you and launch it
+Pick the container that works for you and launch it:
 ```bash
 docker run -it --gpus 0 --ipc=host --pid=host clearml/fractional-gpu:u22-cu12.3-8gb bash
 ```
 
-To verify fraction gpu memory limit is working correctly, run inside the container:
+To verify fraction GPU memory limit is working correctly, run inside the container:
 ```bash
 nvidia-smi
 ``` 
@@ -89,15 +89,15 @@ processes and other host processes when limiting memory / utilization usage
 
 ## 🔩 Customization
 
-Build your own containers and inherit form the original containers
+Build your own containers and inherit form the original containers.
 
-You can find a few examples [here](https://github.com/allegroai/clearml-fractional-gpu/docker-examples).
+You can find a few examples [here](https://github.com/allegroai/clearml-fractional-gpu/tree/main/examples).
 
 ## ☸ Kubernetes
 
 Fractional GPU containers can be used on bare-metal executions as well as Kubernetes PODs.
-Yes! By using one the Fractional GPU containers you can limit the memory consumption your Job/Pod and 
-allow you to easily share GPUs without fearing they will memory crash one another!
+Yes! By using one of the Fractional GPU containers you can limit the memory consumption of your Job/Pod and 
+easily share GPUs without fearing they will memory crash one another!
 
 Here's a simple Kubernetes POD template:
 ```yaml
@@ -127,12 +127,12 @@ processes and other host processes when limiting memory / utilization usage
 
 ## 🔌 Support & Limitations
 
-The containers support Nvidia drivers <= `545.x.x`
+The containers support Nvidia drivers <= `545.x.x`.
 We will keep updating & supporting new drivers as they continue to be released
 
 **Supported GPUs**: RTX series 10, 20, 30, 40, A series, and Data-Center P100, A100, A10/A40, L40/s, H100 
 
-**Limitations**: Windows Host machines are currently not supported, if this is important for you, leave a request in the [Issues](/issues) section
+**Limitations**: Windows Host machines are currently not supported. If this is important for you, leave a request in the [Issues](/issues) section
 
 ## ❓ FAQ
 
@@ -153,8 +153,8 @@ print(f'Free GPU Memory: {cuda.current_context().get_memory_info()}')
 ```
 
 - **Q**: Can the limitation be broken by a user? <br>
-**A**: We are sure a malicious user will find a way. It was never our intention to protect against malicious users, <br>
-if you have a malicious user with access to your machines, fractional gpus are not your number 1 problem 😃
+**A**: We are sure a malicious user will find a way. It was never our intention to protect against malicious users. <br>
+If you have a malicious user with access to your machines, fractional GPUs are not your number 1 problem 😃
 
 - **Q**: How can I programmatically detect the memory limitation? <br>
 **A**: You can check the OS environment variable `GPU_MEM_LIMIT_GB`. <br>
@@ -164,12 +164,12 @@ Notice that changing it will not remove or reduce the limitation.
 **A**: It should be both secure and safe. The main caveat from a security perspective is that
 a container process can see any command line running on the host system.
 If a process command line contains a "secret" then yes, this might become a potential data leak.
-Notice that passing "secrets" in command line is ill-advised, and hence we do not consider it a security risk.
+Notice that passing "secrets" in the command line is ill-advised, and hence we do not consider it a security risk.
 That said if security is key, the enterprise edition (see below) eliminate the need to run with `pid-host` and thus fully secure
 
 - **Q**: Can you run the container **without** `--pid=host` ? <br>
 **A**: You can! but you will have to use the enterprise version of the clearml-fractional-gpu container 
-(otherwise the memory limit is applied system wide instead of container wide). If this feature is important for you, please contact [ClearML sales & support](https://clear.ml/contact-us)
+(otherwise the memory limit is applied system wide instead of container wide). If this feature is important for you, please contact [ClearML sales & support](https://clear.ml/contact-us).
 
 
 ## 📄 License
@@ -188,7 +188,9 @@ Learn more about [ClearML Orchestration](https://clear.ml) or talk to us directl
 ## 📡 How can I help?
 
 Tell everyone about it! #ClearMLFractionalGPU
+
 Join our [Slack Channel](https://joinslack.clear.ml/)
+
 Tell us when things are not working, and help us debug it on the [Issues Page](https://github.com/allegroai/clearml-fractional-gpu/issues)
 
 ## 🌟 Credits
