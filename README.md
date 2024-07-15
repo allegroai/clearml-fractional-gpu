@@ -140,7 +140,7 @@ We will keep updating & supporting new drivers as they continue to be released
 **A**: Yes,  `nvidia-smi` is communicating directly with the low-level drivers and reports both accurate container GPU memory as well as the container local memory limitation.<br>
 Notice GPU utilization will be the global (i.e. host side) GPU utilization and not the specific local container GPU utilization.
 
-- **Q**: How do I make sure my Python / Pytorch / Tensorflow are actually memory limited <br>
+- **Q**: How do I make sure my Python / Pytorch / Tensorflow are actually memory limited? <br>
 **A**: For PyTorch you can run: <br>
 ```python
 import torch
@@ -165,10 +165,10 @@ Notice that changing it will not remove or reduce the limitation.
 a container process can see any command line running on the host system.
 If a process command line contains a "secret" then yes, this might become a potential data leak.
 Notice that passing "secrets" in the command line is ill-advised, and hence we do not consider it a security risk.
-That said if security is key, the enterprise edition (see below) eliminate the need to run with `pid-host` and thus fully secure
+That said if security is key, the enterprise edition (see below) eliminate the need to run with `pid-host` and thus fully secure.
 
 - **Q**: Can you run the container **without** `--pid=host` ? <br>
-**A**: You can! but you will have to use the enterprise version of the clearml-fractional-gpu container 
+**A**: You can! But you will have to use the enterprise version of the clearml-fractional-gpu container 
 (otherwise the memory limit is applied system wide instead of container wide). If this feature is important for you, please contact [ClearML sales & support](https://clear.ml/contact-us).
 
 
@@ -183,7 +183,7 @@ An expanded Commercial license for use within a product or service is available 
 ClearML offers enterprise and commercial license adding many additional features on top of fractional GPUs,
 these include orchestration, priority queues, quota management, compute cluster dashboard, 
 dataset management & experiment management, as well as enterprise grade security and support.
-Learn more about [ClearML Orchestration](https://clear.ml) or talk to us directly at [ClearML sales](https://clear.ml/contact-us)
+Learn more about [ClearML Orchestration](https://clear.ml) or talk to us directly at [ClearML sales](https://clear.ml/contact-us).
 
 ## 📡 How can I help?
 
