@@ -19,15 +19,20 @@ We present pre-packaged containers supporting CUDA 11.x & CUDA 12.x with pre-bui
 This means multiple containers can be launched on the same GPU, ensuring one user cannot allocate the entire host GPU memory!
 (No more greedy processes grabbing the entire GPU memory! Finally we have a driver level hard limiting memory option).
 
+![Fractional GPU diagram](docs/fractional_gpu_diagram.png)
+
 ## 🚀 Offerings 
 
 ClearML offers several options to optimize GPU resource utilization by partitioning GPUs:
+* [**Dynamic GPU Slicing**](https://clear.ml/docs/latest/docs/clearml_agent/clearml_agent_fractional_gpus#dynamic-gpu-fractions): 
+On-demand GPU slicing per task for both MIG and non-MIG devices (available under the ClearML Enterprise plan):
+   * [Bare Metal deployment](https://clear.ml/docs/latest/docs/clearml_agent/clearml_agent_fractional_gpus#bare-metal-deployment)
+   * [Kubernetes deployment](https://clear.ml/docs/latest/docs/clearml_agent/clearml_agent_fractional_gpus#kubernetes-deploymen)
 * **Container-based Memory Limits** (**this repository**): Use pre-packaged containers with built-in memory limits to 
 run multiple containers on the same GPU (available as part of the ClearML open source offering).
-* **Kubernetes-based Static MIG Slicing**: Set up Kubernetes support for NVIDIA MIG (Multi-Instance GPU) to define GPU 
+* [**Kubernetes-based Static MIG Slicing**](https://clear.ml/docs/latest/docs/clearml_agent/clearml_agent_fractional_gpus#kubernetes-static-mig-fractions): 
+Set up Kubernetes support for NVIDIA MIG (Multi-Instance GPU) to define GPU 
 fractions for specific workloads (available as part of the ClearML open source offering).
-* **Dynamic GPU Slicing**: On-demand GPU slicing per task for both MIG and non-MIG devices, supporting both bare metal 
-and Kubernetes deployments (available under the ClearML Enterprise plan).
 
 With these options, ClearML enables running AI workloads with optimized hardware utilization and workload performance. 
 This repository covers container-based fractional GPUs. For more information on ClearML's fractional GPU offerings, see 
