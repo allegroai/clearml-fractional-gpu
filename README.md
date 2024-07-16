@@ -19,8 +19,6 @@ We present pre-packaged containers supporting CUDA 11.x & CUDA 12.x with pre-bui
 This means multiple containers can be launched on the same GPU, ensuring one user cannot allocate the entire host GPU memory!
 (No more greedy processes grabbing the entire GPU memory! Finally we have a driver level hard limiting memory option).
 
-![Fractional GPU diagram](docs/fractional_gpu_diagram.png)
-
 ## 🚀 Offerings 
 
 ClearML offers several options to optimize GPU resource utilization by partitioning GPUs:
@@ -38,6 +36,7 @@ With these options, ClearML enables running AI workloads with optimized hardware
 This repository covers container-based fractional GPUs. For more information on ClearML's fractional GPU offerings, see 
 the [ClearML documentation](https://clear.ml/docs/latest/docs/clearml_agent/clearml_agent_fractional_gpus). 
 
+![Fractional GPU diagram](docs/fractional_gpu_diagram.png)
 
 ## ⚡ Installation
 
