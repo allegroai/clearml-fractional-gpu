@@ -9,31 +9,22 @@
 
 ## 🔰 Introduction
 
-Sharing high-end GPUs or even prosumer & consumer GPUs between multiple users is the most cost-effective 
-way to accelerate AI development. Unfortunately, until now the 
-only existing solution applied for MIG/Slicing high-end GPUs (A100+) and required Kubernetes, <br>
+Sharing high-end GPUs or even prosumer & consumer GPUs between multiple users is the most cost-effective way to accelerate AI development. Unfortunately, until now the only existing solution was static MIG/slicing high-end GPUs and required Kubernetes. <br>
 
-🔥 🎉 Welcome To Container Based Fractional GPU For Any Nvidia Card! 🎉 🔥 <br>
+🔥 🎉 We’re introducing ClearML’s Dynamic Fractional GPU! 🎉 🔥 <br>
 
-We present pre-packaged containers supporting CUDA 11.x & CUDA 12.x with pre-built hard memory limitation!
-This means multiple containers can be launched on the same GPU, ensuring one user cannot allocate the entire host GPU memory!
-(No more greedy processes grabbing the entire GPU memory! Finally we have a driver level hard limiting memory option).
+ClearML offers a comprehensive suite of tools to help AI builders accelerate their AI development and increase utilization by using fractions of GPUs and running multiple workloads on the same silicon.
 
 ## 🚀 Offerings 
 
-ClearML offers several options to optimize GPU resource utilization by partitioning GPUs:
-* [**Dynamic GPU Slicing**](https://clear.ml/docs/latest/docs/clearml_agent/clearml_agent_fractional_gpus#dynamic-gpu-fractions): 
-On-demand GPU slicing per task for both MIG and non-MIG devices (available under the ClearML Enterprise plan):
-   * [Bare Metal deployment](https://clear.ml/docs/latest/docs/clearml_agent/clearml_agent_fractional_gpus#bare-metal-deployment)
-   * [Kubernetes deployment](https://clear.ml/docs/latest/docs/clearml_agent/clearml_agent_fractional_gpus#kubernetes-deploymen)
-* **Container-based Memory Limits** (**this repository**): Use pre-packaged containers with built-in memory limits to 
-run multiple containers on the same GPU (available as part of the ClearML open source offering).
-* [**Kubernetes-based Static MIG Slicing**](https://clear.ml/docs/latest/docs/clearml_agent/clearml_agent_fractional_gpus#kubernetes-static-mig-fractions): 
-Set up Kubernetes support for NVIDIA MIG (Multi-Instance GPU) to define GPU 
-fractions for specific workloads (available as part of the ClearML open source offering).
+* Pre-packaged containers with CUDA 11.x, 12.x and 13.x support, featuring built-in GPU memory limits. Multiple containers can run on the same GPU, preventing any single user from consuming the full GPU memory.
+* Support for both NVIDIA and AMD GPUs
+* On-the-fly dynamic GPU slicing - ClearML’s [**Kubernetes operator**](https://clear.ml/docs/latest/docs/clearml_agent/fractional_gpus/cdmo) (and bare-metal agent) dynamically adjusts the MIG profile according to workload demands, without requiring manual re-partitioning. [Requires Enterprise License]
+* Driver-level container memory limits and compute-time slicing - With ClearML’s enterprise dynamic fractional-GPU, you can run any off-the-shelf container while ClearML enforces GPU VRAM limits ensuring one container does not interfere or is exposed to other containers on the same GPU. [Requires Enterprise License]
+* Unified Memory Technology support - Park model weights and caches in CPU memory, transferring them to GPU memory on demand when an API call is made. This allows multiple models to be deployed on single- or multi-GPU machines, keeping all models online and ready with near-zero switching latency. [Requires Enterprise License]
+* Quota, priority, and spillover rules for GPU fractions - With ClearML’s Resource Manager you can define hierarchical quotas and spill-over behaviour so teams or jobs don’t battle each other for GPU access. [Requires Enterprise License]
 
-With these options, ClearML enables running AI workloads with optimized hardware utilization and workload performance. 
-This repository covers container-based fractional GPUs. For more information on ClearML's fractional GPU offerings, see 
+With these capabilities, ClearML enables running AI workloads with optimized hardware utilization and workload performance. This repository covers container-based fractional GPUs. For more information on ClearML's fractional GPU offerings, see 
 the [ClearML documentation](https://clear.ml/docs/latest/docs/clearml_agent/clearml_agent_fractional_gpus). 
 
 ![Fractional GPU diagram](docs/fractional_gpu_diagram.png)
